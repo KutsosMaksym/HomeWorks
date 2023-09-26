@@ -8,28 +8,28 @@ public class CalculatorTest {
     double c = 12.4;
     double d = 1.1;
 
-    @Test(priority = 1)
+    @Test
     public void addCheck() {
         System.out.println("add");
         System.out.println(Calculator.add(a, b));
         System.out.println(Calculator.add(c, d));
     }
 
-    @Test(priority = 2)
+    @Test
     public void subtractCheck() {
         System.out.println("subtract");
         System.out.println(Calculator.subtract(a, b));
         System.out.println(Calculator.subtract(c, d));
     }
 
-    @Test(priority = 3)
+    @Test
     public void multiplyCheck() {
         System.out.println("multiply");
         System.out.println(Calculator.multiply(a, b));
         System.out.println(Calculator.multiply(c, d));
     }
 
-    @Test(priority = 4)
+    @Test
     public void divideCheck() {
         System.out.println("divide");
         System.out.println(Calculator.divide(a, b));
