@@ -2,7 +2,7 @@ package HW7;
 
 import org.testng.annotations.Test;
 
-public class CalculatorTest {
+public class CalculatorTest { //test changes
     int a = 10;
     int b = 5;
     double c = 12.4;
