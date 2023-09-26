@@ -34,7 +34,7 @@ public class Calculator {
         try {
             return a/b;
         }
-        catch (NullPointerException e){
+        catch (ArithmeticException e){
             return 0;
         }
     }
