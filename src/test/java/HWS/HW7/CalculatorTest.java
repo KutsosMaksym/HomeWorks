@@ -1,5 +1,6 @@
-package HW7;
+package HWS.HW7;
 
+import HWS.HW7.Calculator;
 import org.testng.annotations.Test;
 
 public class CalculatorTest { //test changes

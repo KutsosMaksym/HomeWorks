@@ -1,4 +1,4 @@
-package HW7;
+package HWS.HW7;
 
 public class Rectangle {
     private double high;
