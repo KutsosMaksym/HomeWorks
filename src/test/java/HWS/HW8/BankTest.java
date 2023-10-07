@@ -20,10 +20,10 @@ public class BankTest {
         Bank bank = new Bank(3);
         Bank.Account account1 = bank.createAccount(123, 250);
         System.out.println("Account number " + account1.number + " balance: " + account1.balance);
-        Bank.Transactions transactions = bank.new Transactions();
-        transactions.accountReplenishment(123, 10);
+        bank.createTransactions();
+        bank.accountReplenishment(123, 10);
         System.out.println("Account number " + account1.number + " balance: " + account1.balance);
-        transactions.accountReplenishment(123, -5);
+        bank.accountReplenishment(123, -5);
         System.out.println("Account number " + account1.number + " balance: " + account1.balance);
     }
 
@@ -31,12 +31,12 @@ public class BankTest {
     public void checkWithdrawOperation() {
         Bank bank = new Bank(3);
         Bank.Account account = bank.createAccount(12300, 250);
-        Bank.Transactions transactions = bank.new Transactions();
+        bank.createTransactions();
         System.out.println("Account number " + account.number + " balance: " + account.balance);
-        transactions.accountWithdraw(12300, 5);
+        bank.accountWithdraw(12300, 5);
         System.out.println("Account number " + account.number + " balance: " + account.balance);
-        transactions.accountWithdraw(12300, 300);
-        transactions.accountWithdraw(99999, 300);
+        bank.accountWithdraw(12300, 300);
+        bank.accountWithdraw(99999, 300);
         System.out.println("Account number " + account.number + " balance: " + account.balance);
     }
 
@@ -45,12 +45,12 @@ public class BankTest {
         Bank bank = new Bank(3);
         Bank.Account account1 = bank.createAccount(12003, 100);
         Bank.Account account2 = bank.createAccount(12004, 205);
-        Bank.Transactions transactions = bank.new Transactions();
-        transactions.accountReplenishment(12003, 10);
-        transactions.accountWithdraw(12004, 20);
-        transactions.accountWithdraw(12004, 30);
-        transactions.accountWithdraw(12003, 40);
-        transactions.accountWithdraw(12004, 50);
+        bank.createTransactions();
+        bank.accountReplenishment(12003, 10);
+        bank.accountWithdraw(12004, 20);
+        bank.accountWithdraw(12004, 30);
+        bank.accountWithdraw(12003, 40);
+        bank.accountWithdraw(12004, 50);
         for (String transaction : bank.transactionsLog) {
             System.out.println(transaction);
         }
@@ -60,9 +60,9 @@ public class BankTest {
     public void checkTransactionNumberValidation() {
         Bank bank = new Bank(3);
         Bank.Account account1 = bank.createAccount(123, 250);
-        Bank.Transactions transactions = bank.new Transactions();
-        transactions.accountReplenishment(321, 15);
-        transactions.accountWithdraw(777777, 15);
+        bank.createTransactions();
+        bank.accountReplenishment(321, 15);
+        bank.accountWithdraw(777777, 15);
         System.out.println("Account number " + account1.number + " balance: " + account1.balance);
     }
 }

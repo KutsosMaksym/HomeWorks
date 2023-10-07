@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Bank {
+    private Transactions transactions;
     int accountsQuantityLimit;
     ArrayList<Account> accountsList = new ArrayList<>();
     ArrayList<String> transactionsLog = new ArrayList<>();
@@ -25,6 +26,7 @@ public class Bank {
         return accountsList.get(accountsList.size() - 1);
     }
 
+
     class Account {
         int number;
         double balance;
@@ -35,7 +37,23 @@ public class Bank {
         }
     }
 
-    class Transactions {
+    public Transactions createTransactions() {
+        return this.transactions = new Transactions();
+    }
+
+    public Transactions getTransactions() {
+        return this.transactions;
+    }
+
+    public void accountReplenishment(int number, double sum) {
+        this.transactions.accountReplenishment(number, sum);
+    }
+
+    public void accountWithdraw(int number, double sum) {
+        this.transactions.accountWithdraw(number, sum);
+    }
+
+    private class Transactions {
         void accountReplenishment(int number, double sum) {
             if (!isAccountNumberExists(number)) {
                 System.out.println("There are no such account number " + number);
@@ -82,7 +100,7 @@ public class Bank {
 
     }
 
-    public Boolean isAccountNumberExists(int number) {
+    private Boolean isAccountNumberExists(int number) {
         return accountsList.stream().anyMatch(p -> p.number == number);
     }
 }
