@@ -1,5 +1,6 @@
-package HW7;
+package HWS.HW7;
 
+import HWS.HW7.Person;
 import org.testng.annotations.Test;
 
 public class PersonTest {

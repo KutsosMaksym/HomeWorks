@@ -1,4 +1,4 @@
-package HW7;
+package HWS.HW7;
 
 public class Person {
     private String name;
