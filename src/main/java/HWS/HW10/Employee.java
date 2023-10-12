@@ -18,8 +18,8 @@ public abstract class Employee {
 
     public abstract void calculateBonus();
 
-    public void performanceReport(){
-        System.out.println("Assessment for work for " + jobTitle+ " " + name + ": " + getEvaluation());
+    public void performanceReport() {
+        System.out.println("Assessment for work for " + jobTitle + " " + name + ": " + getEvaluation());
     }
 
 
@@ -34,7 +34,10 @@ public abstract class Employee {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Employee employee)) return false;
-        return (this.address.equals(((Employee) o).address) && this.name.equals(((Employee) o).name) && this.jobTitle.equals(((Employee) o).jobTitle) && this.salary == ((Employee) o).salary);
+        Employee employee1 = (Employee) o;
+        return (address.equals(employee1.address) && name.equals(employee.name) &&
+                jobTitle.equals(employee.jobTitle) && salary == (employee.salary));
+
     }
 
     @Override

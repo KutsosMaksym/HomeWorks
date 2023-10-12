@@ -3,11 +3,11 @@ package HWS.HW10;
 public class MessageGenerator {
 
     public static void main(String[] args) {
-        String info = MessageGenerator.infoMessage("Запуск додатку", "Версія 1.0");
+        String info = infoMessage("Запуск додатку", "Версія 1.0");
         System.out.println(info);
-        String error = MessageGenerator.errorMessage("Файл не знайдено", 404);
+        String error = errorMessage("Файл не знайдено", 404);
         System.out.println(error);
-        String loginToComfy  = MessageGenerator.successLogin("Comfy");
+        String loginToComfy  = successLogin("Comfy");
         System.out.println(loginToComfy);
     }
 
@@ -22,7 +22,7 @@ public class MessageGenerator {
     private static String infoMessage(String... messages) {
         String message = "";
         for (String m : messages) {
-            message += m;
+            message += m + ". ";
         }
         return message;
     }
