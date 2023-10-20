@@ -1,28 +1,20 @@
 package HWS.HW11;
 
-import java.util.Objects;
+public final class Book extends LibraryMaterial {
+    private String author;
+    private Genre genre;
 
-public class Book extends LibraryMaterial {
-    String publishingHouse;
-    String bookBinding;
-    int amountOfStrings;
-
-
-    public Book(String title, int ageVersion, String publishingHouse, String bookBinding, int amountOfStrings) {
-        super(title, ageVersion);
-        this.publishingHouse = publishingHouse;
-        this.bookBinding = bookBinding;
-        this.amountOfStrings = amountOfStrings;
+    public Book(String title, String shortDescription, String author, Genre genre) {
+        super(title, shortDescription);
+        this.author = author;
+        this.genre = genre;
     }
 
     @Override
     public String toString() {
-        return "Book{" +
-                "publishingHouse='" + publishingHouse + '\'' +
-                ", bookBinding='" + bookBinding + '\'' +
-                ", amountOfStrings=" + amountOfStrings +
-                ", title='" + title + '\'' +
-                ", ageVersion=" + ageVersion +
-                '}';
+        return "Book - "  + '\'' + title + '\'' +
+                ". " + shortDescription +
+                ". Genre - " + genre +
+                ". Written by: '" + author + '\'' + ".";
     }
 }

@@ -3,8 +3,8 @@ package HWS.HW11;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Library {
-    Storage storage = new Storage();
+public class Library implements LibraryService {
+    private Storage storage = new Storage();
 
     void addBookToStorage(Book book) {
         storage.createLibraryMaterial(book);
@@ -18,34 +18,120 @@ public class Library {
         storage.createLibraryMaterial(magazine);
     }
 
-    Book borrowABook(String title) {
+    public Book borrowABook(String title) {
         Book book = storage.getBookByTitle(title);
-        List <Book> books = new ArrayList<>();
-
-        storage.changeMaterialStatus(book, storage.books, storage.borrowedBooks);
+        if (book != null) {
+            storage.changeBookStatus(book, storage.books, storage.borrowedBooks);
+        }
         return book;
     }
 
-    Audiobook borrowAnAudioBook(String title) { //TODO
-        storage.borrowedAudiobooks.add(storage.getAudioBookByTitle(title));
-        return storage.getAudioBookByTitle(title);
+    public Audiobook borrowAnAudioBook(String title) {
+        Audiobook audiobook = storage.getAudioBookByTitle(title);
+        if (audiobook != null) {
+            storage.changeAudioBookStatus(audiobook, storage.audiobooks, storage.borrowedAudiobooks);
+        }
+        return audiobook;
     }
 
-    Magazine borrowAMagazine(String title) { //TODO
-        storage.borrowedMagazines.add(storage.getMagazineByTitle(title));
-        return storage.getMagazineByTitle(title);
+    public Magazine borrowAMagazine(String title) {
+        Magazine magazine = storage.getMagazineByTitle(title);
+        if (magazine != null) {
+            storage.changeMagazineStatus(magazine, storage.magazines, storage.borrowedMagazines);
+        }
+        return magazine;
     }
 
-    Book returnABook(String title) {
+    public void returnABook(String title) {
         Book book = storage.getBookByTitle(title);
-
-        storage.borrowedBooks.add(book);
-        storage.removeBookFromStockByTitle(title);
-        return book;
+        if (book != null) {
+            storage.changeBookStatus(book, storage.borrowedBooks, storage.books);
+        }
     }
 
+    public void returnAnAudiobook(String title) {
+        Audiobook audiobook = storage.getAudioBookByTitle(title);
+        if (audiobook != null) {
+            storage.changeAudioBookStatus(audiobook, storage.borrowedAudiobooks, storage.audiobooks);
+        }
+    }
 
-    class Storage {
+    public void returnMagazine(String title) {
+        Magazine magazine = storage.getMagazineByTitle(title);
+        if (magazine != null) {
+            storage.changeMagazineStatus(magazine, storage.borrowedMagazines, storage.magazines);
+        }
+    }
+
+    public void findAvailableMaterialByKeyword(String keyword) {
+        if (storage.findLibraryMaterialByKeyword(keyword) != null)
+            System.out.println(storage.findLibraryMaterialByKeyword(keyword));
+    }
+
+    public void displayListOfAvailableBooks() {
+        if (storage.books.isEmpty()){
+            System.out.println("There no available books");
+            return;
+        }
+        System.out.println("List of available books: ");
+        for (LibraryMaterial material : storage.books) {
+            System.out.println(material);
+        }
+    }
+
+    public void displayListOfAvailableAudiobooks() {
+        if (storage.audiobooks.isEmpty()){
+            System.out.println("There no available audiobooks");
+            return;
+        }
+        System.out.println("List of available audiobooks: ");
+        for (LibraryMaterial material : storage.audiobooks) {
+            System.out.println(material);
+        }
+    }
+
+    public void displayListOfAvailableMagazines() {
+        if (storage.magazines.isEmpty()){
+            System.out.println("There no available magazines");
+            return;
+        }
+        System.out.println("List of available magazines: ");
+        for (LibraryMaterial material : storage.magazines) {
+            System.out.println(material);
+        }
+    }
+    public void displayListOfBorrowedBooks() {
+        if (storage.borrowedBooks.isEmpty()){
+            System.out.println("There are no borrowed books");
+            return;
+        }
+        System.out.println("List of borrowed books(Temporarily  not available): ");
+        for (LibraryMaterial material : storage.borrowedBooks) {
+            System.out.println(material);
+        }
+    }
+    public void displayListOfBorrowedAudiobooks() {
+        if (storage.audiobooks.isEmpty()){
+            System.out.println("There are no borrowed audiobooks");
+            return;
+        }
+        System.out.println("List of borrowed books(Temporarily  not available): ");
+        for (LibraryMaterial material : storage.borrowedAudiobooks) {
+            System.out.println(material);
+        }
+    }
+    public void displayListOfBorrowedMagazines() {
+        if (storage.borrowedMagazines.isEmpty()){
+            System.out.println("There are no borrowed magazines");
+            return;
+        }
+        System.out.println("List of borrowed books(Temporarily  not available): ");
+        for (LibraryMaterial material : storage.borrowedMagazines) {
+            System.out.println(material);
+        }
+    }
+
+    private class Storage {
         List<Book> books = new ArrayList<>();
         List<Book> borrowedBooks = new ArrayList<>();
         List<Audiobook> audiobooks = new ArrayList<>();
@@ -53,16 +139,21 @@ public class Library {
         List<Magazine> magazines = new ArrayList<>();
         List<Magazine> borrowedMagazines = new ArrayList<>();
 
-        void changeMaterialStatus(LibraryMaterial libraryMaterial, List<LibraryMaterial> from, List<LibraryMaterial> to){
-            if (libraryMaterial instanceof Book) {
-                to.add((Book) libraryMaterial);
-                from.remove(libraryMaterial);
-            } else if (libraryMaterial instanceof Audiobook) {
-                //TODO
-            } else if (libraryMaterial instanceof Magazine) {
-                //TODO
-            }
+        void changeBookStatus(Book book, List<Book> from, List<Book> to) {
+            to.add(book);
+            from.remove(book);
         }
+
+        void changeAudioBookStatus(Audiobook audioBook, List<Audiobook> from, List<Audiobook> to) {
+            to.add(audioBook);
+            from.remove(audioBook);
+        }
+
+        void changeMagazineStatus(Magazine magazine, List<Magazine> from, List<Magazine> to) {
+            to.add(magazine);
+            from.remove(magazine);
+        }
+
         void createLibraryMaterial(LibraryMaterial libraryMaterial) {
             if (libraryMaterial instanceof Book) {
                 storage.books.add((Book) libraryMaterial);
@@ -79,15 +170,27 @@ public class Library {
                     return book;
                 }
             }
+            for (Book book : storage.borrowedBooks) {
+                if (book.title.equals(title)) {
+                    return book;
+                }
+            }
+            System.out.println("There are no such book with title: " + title);
             return null;
         }
 
         Audiobook getAudioBookByTitle(String title) {
-            for (Audiobook audiobook : storage.audiobooks) {
+            for (Audiobook audioBook : storage.audiobooks) {
+                if (audioBook.title.equals(title)) {
+                    return audioBook;
+                }
+            }
+            for (Audiobook audiobook : storage.borrowedAudiobooks) {
                 if (audiobook.title.equals(title)) {
                     return audiobook;
                 }
             }
+            System.out.println("There are no such Audiobook with title: " + title);
             return null;
         }
 
@@ -97,33 +200,34 @@ public class Library {
                     return magazine;
                 }
             }
+            for (Magazine magazine : storage.borrowedMagazines) {
+                if (magazine.title.equals(title)) {
+                    return magazine;
+                }
+            }
+            System.out.println("There are no such magazine with title: " + title);
             return null;
         }
 
-
-        void removeBookFromStockByTitle(String title) {
-            for (Book book : storage.books) {
-                if (book.title.equals(title)) {
-                    storage.books.remove(book);
-                    break;
-                }
+        LibraryMaterial findLibraryMaterialByKeyword(String keyword) {
+            for (Book book : books) {
+                if (isLibraryMaterialContainsKeyword(keyword, book))
+                    return book;
             }
+            for (Audiobook audiobook : audiobooks) {
+                if (isLibraryMaterialContainsKeyword(keyword, audiobook))
+                    return audiobook;
+            }
+            for (Magazine magazine : magazines) {
+                if (isLibraryMaterialContainsKeyword(keyword, magazine))
+                    return magazine;
+            }
+            System.out.println("There are no such material with keyword: " + keyword);
+            return null;
         }
 
-        void removeAudioBookFromStockByTitle(String title) { //TODO
-
+        boolean isLibraryMaterialContainsKeyword(String keyword, LibraryMaterial libraryMaterial) {
+            return libraryMaterial.getTitle().contains(keyword) || libraryMaterial.getShortDescription().contains(keyword);
         }
-
-            void removeMagazineFromStockByTitle(String title) { //TODO
-    }
-//        void returnBookToStockByTitle(String title) {
-//                  for (Book book : storage.books) {
-//                if (book.title.equals(title)) {
-//                    storage.books.remove(book);
-//                    break;
-//                }
-//            }
-        //     }
-
     }
 }
