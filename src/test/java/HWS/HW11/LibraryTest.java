@@ -20,7 +20,7 @@ public class LibraryTest {
         library.addMagazineToStorage(magazine2);
         library.addMagazineToStorage(magazine3);
         Audiobook audiobook1 = new Audiobook("The Game of Logic", "The fundamentals of logic", 360);
-        Audiobook audiobook2 = new Audiobook("The Man of the World", "Folding up a familiar story template and twisting meanings and themes out of it ", 200);
+        Audiobook audiobook2 = new Audiobook("The Life of James Clerk Maxwell", "The Man Who Changed Everything", 200);
         library.addAudiobookToStorage(audiobook1);
         library.addAudiobookToStorage(audiobook2);
     }
@@ -46,7 +46,7 @@ public class LibraryTest {
     @Test (dependsOnMethods = "addMaterialsToLibrary", priority = 3)
     public void findALibraryMaterialByKeyword() {
         library.findAvailableMaterialByKeyword("Man");
-        library.borrowAnAudioBook("The Man of the World");
+        library.borrowAnAudioBook("The Life of James Clerk Maxwell");
         library.findAvailableMaterialByKeyword("Man");
         library.borrowAMagazine("Man's World");
         library.findAvailableMaterialByKeyword("Man");
