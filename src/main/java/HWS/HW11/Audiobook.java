@@ -1,6 +1,6 @@
 package HWS.HW11;
 
-public final class Audiobook extends LibraryMaterial {
+public final class Audiobook extends Material {
     private int minutesDuration;
 
     public Audiobook(String title, String shortDescription, int minutesDuration) {

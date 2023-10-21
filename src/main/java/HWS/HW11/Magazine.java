@@ -1,6 +1,6 @@
 package HWS.HW11;
 
-public final class Magazine extends LibraryMaterial {
+public final class Magazine extends Material {
     private int circulation;
 
     public Magazine(String title, String shortDescription, int circulation) {

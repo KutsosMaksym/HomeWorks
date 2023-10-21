@@ -1,10 +1,10 @@
 package HWS.HW11;
 
-public sealed abstract class LibraryMaterial permits Book, Audiobook, Magazine {
+public sealed abstract class Material permits Book, Audiobook, Magazine {
     protected String title;
     protected String shortDescription;
 
-    public LibraryMaterial(String title, String shortDescription) {
+    public Material(String title, String shortDescription) {
         this.title = title;
         this.shortDescription = shortDescription;
     }

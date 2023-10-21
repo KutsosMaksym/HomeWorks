@@ -1,6 +1,6 @@
 package HWS.HW11;
 
-public final class Book extends LibraryMaterial {
+public final class Book extends Material {
     private String author;
     private Genre genre;
 
