@@ -46,7 +46,7 @@ public class CollectionsOperations {
         cows.put(cow8.getName(), cow8);
         cows.put(cow9.getName(), cow9);
         cows.put(cow10.getName(), cow10);
-        for (Map.Entry<String, Cow> entry: cows.entrySet()){
+        for (Map.Entry<String, Cow> entry : cows.entrySet()) {
             System.out.println(entry.getKey() + " " + entry.getValue());
         }
     }
