@@ -13,7 +13,7 @@ public class CollectionsOperations {
         numbers.add(23);
         numbers.add(23);
         numbers.add(-223);
-        numbers.removeIf(i -> i % 2 == 0);
+        numbers.removeIf(i -> i % 2 != 0);
         System.out.println(numbers);
         HashSet<String> strings1 = new HashSet<>();
         strings1.add("A");
