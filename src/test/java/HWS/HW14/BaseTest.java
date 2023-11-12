@@ -9,25 +9,25 @@ import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
 
-    @BeforeClass
+    @BeforeClass (alwaysRun = true)
     public void beforeClass(ITestContext context) {
         String className = this.getClass().getSimpleName();
         System.out.println(className + " tests are started");
     }
 
-    @AfterClass
+    @AfterClass (alwaysRun = true)
     public void afterClass() {
         String className = this.getClass().getSimpleName();
         System.out.println(className + " tests are finished");
     }
 
-    @BeforeMethod
+    @BeforeMethod (alwaysRun = true)
     public void beforeTestMethod(ITestResult result) {
         String testName = result.getMethod().getMethodName();
         System.out.println("Before method for test: " + testName);
     }
 
-    @AfterMethod
+    @AfterMethod (alwaysRun = true)
     public void afterTestMethod(ITestResult result) {
         String testName = result.getMethod().getMethodName();
         System.out.println("After method for test: " + testName);
