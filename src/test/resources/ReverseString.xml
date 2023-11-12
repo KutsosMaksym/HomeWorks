@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="ReverseString suite">
+    <groups>
+        <run>
+            <include name="ReverseString"/>
+        </run>
+    </groups>
+    <test name="ReverseString">
+        <packages>
+            <package name="HWS.HW14"/>
+        </packages>
+    </test>
+</suite>

@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="RemoveExtraSymbols suite">
+    <groups>
+        <run>
+            <include name="RemoveExtraSymbols"/>
+        </run>
+    </groups>
+    <test name="RemoveExtraSymbols">
+        <packages>
+            <package name="HWS.HW14"/>
+        </packages>
+    </test>
+</suite>
