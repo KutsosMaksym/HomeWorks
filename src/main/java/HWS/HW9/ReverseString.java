@@ -2,7 +2,7 @@ package HWS.HW9;
 
 public class ReverseString {
 
-    String reverse(StringBuilder initialString) {
+    public String reverse(StringBuilder initialString) {
         try {
             if (initialString.length() == 0)
                 return "";
