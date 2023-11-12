@@ -1,12 +1,11 @@
 package HWS.HW14;
 
+import HWS.TestListener;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 
+@Listeners(TestListener.class)
 public class BaseTest {
 
     @BeforeClass (alwaysRun = true)
