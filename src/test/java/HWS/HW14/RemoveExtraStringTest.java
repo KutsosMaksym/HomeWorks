@@ -5,7 +5,7 @@ import org.testng.annotations.*;
 
 import static org.testng.Assert.assertEquals;
 
-public class RemoveExtraStringTest extends BaseTest{
+public class RemoveExtraStringTest extends BaseTest14 {
     RemoveExtraString removeExtraSymbols = new RemoveExtraString();
 
     @Test(dataProvider = "stringSt", groups = {"RemoveExtraString", "positive"})
