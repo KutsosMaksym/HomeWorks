@@ -30,6 +30,7 @@ public class BstackdemoTest extends BaseTest {
         WebElement bagPricePixel3 = driver.findElement(By.xpath("(//div[@class='float-cart__shelf-container']//div[@class='shelf-item__price'])[2]/p"));
         WebElement bagQuantityPixel3 = driver.findElement(By.xpath("(//div[@class='float-cart__shelf-container']//p[@class='desc'])[2]"));
         WebElement buttonCheckout = driver.findElement(By.xpath("//div[@class='buy-btn']"));
+        WebElement buttonSubtotalBag = driver.findElement(By.xpath("//p[@class='sub-price__val']"));
         Assert.assertEquals(bagNameIphoneXs.getText(), nameIphoneXs.getText());
         Assert.assertEquals(bagPriceIphoneXs.getText().replaceAll("\\s", ""), priceIphoneXs.getText());
         Assert.assertTrue(bagQuantityIphoneXs.getText().contains("Quantity: 1"));
@@ -38,6 +39,7 @@ public class BstackdemoTest extends BaseTest {
         Assert.assertTrue(bagQuantityPixel3.getText().contains("Quantity: 1"));
         Assert.assertTrue(bagQuantityPixel3.getText().contains("Quantity: 1"));
         Assert.assertEquals(buttonCheckout.getText(), "CHECKOUT");
+        Assert.assertEquals(buttonSubtotalBag.getText(), "$ 1148.00");
     }
 
     @Test
