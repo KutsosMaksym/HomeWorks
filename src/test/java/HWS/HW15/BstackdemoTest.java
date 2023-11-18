@@ -52,7 +52,7 @@ public class BstackdemoTest extends BaseTest {
         WebElement buttonRemoveProductFromBasket = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='shelf-item__del']")));
         buttonRemoveProductFromBasket.click();
         WebElement emptyBagText = driver.findElement(By.xpath("//div[@class='float-cart__shelf-container']/p"));
-        WebElement bagCounter = driver.findElement(By.xpath("//span[@class='bag__quantity']"));
+        WebElement bagCounter = driver.findElement(By.className("bag__quantity"));
         WebElement buttonCheckout = driver.findElement(By.xpath("//div[@class='buy-btn']"));
         WebElement buttonSubtotalBag = driver.findElement(By.xpath("//p[@class='sub-price__val']"));
         Assert.assertEquals(emptyBagText.getText(), "Add some products in the bag\n:)");
