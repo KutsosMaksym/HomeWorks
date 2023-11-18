@@ -6,7 +6,7 @@ import org.testng.annotations.*;
 
 import static org.testng.Assert.assertEquals;
 
-public class ReverseStringTest extends BaseTest {
+public class ReverseStringTest extends BaseTest14 {
     ReverseString rev = new ReverseString();
 
     @Test (groups = {"ReverseString", "positive"})

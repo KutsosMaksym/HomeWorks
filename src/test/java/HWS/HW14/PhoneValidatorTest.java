@@ -5,7 +5,7 @@ import org.testng.annotations.*;
 
 import static org.testng.Assert.*;
 
-public class PhoneValidatorTest extends BaseTest {
+public class PhoneValidatorTest extends BaseTest14 {
 
     @Test(dataProvider = "validPhones", groups = {"PhoneValidator", "positive"})
     void checkValidPhones(String validPhone) {
