@@ -1,4 +1,4 @@
-package HWS.TestHelper;
+package HWS.HW16;
 
 import HWS.Helper.TestListener;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -36,6 +36,7 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
-        driver.quit();
+        if (driver != null)
+            driver.quit();
     }
 }
