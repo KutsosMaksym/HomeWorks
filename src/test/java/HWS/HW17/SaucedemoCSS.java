@@ -31,6 +31,7 @@ public class SaucedemoCSS extends BaseTest {
         Assert.assertTrue(wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[href*=\"/?trk=organization_guest_nav-header-logo\"]"))).isDisplayed());
         driver.close();
         driver.switchTo().window(tabs.get(0));
-        driver.navigate().back();
+        driver.findElement(By.cssSelector("#react-burger-menu-btn")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#logout_sidebar_link"))).click();
     }
 }
