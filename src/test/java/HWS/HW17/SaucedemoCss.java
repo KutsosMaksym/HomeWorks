@@ -9,7 +9,7 @@ public class SaucedemoCss extends BaseTest {
     public void Saucedemo (){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.openLoginPage();
-        loginPage.loginAsStandardUserName();
+        loginPage.login("standard_user", "secret_sauce");
 
         MainPage mainPage = new MainPage(driver);
         mainPage.goToLinkedinPage();
@@ -27,27 +27,30 @@ public class SaucedemoCss extends BaseTest {
     public void buyMostExpensiveProduct (){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.openLoginPage();
-        loginPage.loginAsStandardUserName();
+        loginPage.login("standard_user", "secret_sauce");
 
         MainPage mainPage = new MainPage(driver);
         mainPage.filterByPriceHighToLow();
+        String firstProductTitle = mainPage.getProductTitle(mainPage.getFirstItem());
+        Assert.assertEquals(firstProductTitle, "Sauce Labs Fleece Jacket");
         mainPage.addToCart(mainPage.getFirstItem());
         mainPage.openCart();
 
-        Cart cart = new Cart(driver);
-        cart.checkout();
+        CartPage cartPage = new CartPage(driver);
+        cartPage.checkout();
 
-        CheckoutStep1 checkoutStep1 = new CheckoutStep1(driver);
-        checkoutStep1.setPersonalInfo();
-        checkoutStep1.continueCheckout();
+        CheckoutStep1Page checkoutStep1Page = new CheckoutStep1Page(driver);
+        checkoutStep1Page.setPersonalInfo("Peter", "Parker", "11375");
+        checkoutStep1Page.continueCheckout();
 
-        CheckoutStep2 checkoutStep2 = new CheckoutStep2(driver);
-        Assert.assertTrue(checkoutStep2.getTotalPrice().contains("49.99"));
-        checkoutStep2.finish();
+        CheckoutStep2Page checkoutStep2Page = new CheckoutStep2Page(driver);
+        Assert.assertTrue(checkoutStep2Page.getTotalPrice().contains("49.99"));
+        Assert.assertEquals(checkoutStep2Page.getFirstItemTitle(), firstProductTitle);
+        checkoutStep2Page.finish();
 
-        CheckoutComplete checkoutComplete = new CheckoutComplete(driver);
-        Assert.assertEquals(checkoutComplete.getTitle(), "Checkout: Complete!");
-        checkoutComplete.backHome();
+        CheckoutCompletePage checkoutCompletePage = new CheckoutCompletePage(driver);
+        Assert.assertEquals(checkoutCompletePage.getTitle(), "Checkout: Complete!");
+        checkoutCompletePage.backHome();
 
         mainPage.logout();
     }

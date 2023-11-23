@@ -12,21 +12,21 @@ public class LoginPage extends BasePage {
         driver.get("https://www.saucedemo.com/");
     }
 
-    private void setStandardUserName() {
-        setText(driver.findElement(By.cssSelector("#user-name")), "standard_user");
+    private void setStandardUserName(String username) {
+        setText(driver.findElement(By.cssSelector("#user-name")), username);
     }
 
-    public void setCommonPassword() {
-        setText(driver.findElement(By.cssSelector("#password")), "secret_sauce");
+    public void setCommonPassword(String password) {
+        setText(driver.findElement(By.cssSelector("#password")), password);
     }
 
     public void submit() {
         clickButton(driver.findElement(By.cssSelector("#login-button")));
     }
 
-    public void loginAsStandardUserName() {
-        setStandardUserName();
-        setCommonPassword();
+    public void login(String username, String password) {
+        setStandardUserName(username);
+        setCommonPassword(password);
         submit();
     }
 

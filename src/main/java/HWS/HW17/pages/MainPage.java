@@ -10,17 +10,20 @@ import java.util.List;
 
 public class MainPage extends BasePage {
     ArrayList<WebElement> products;
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
 
-    public void goToLinkedinPage(){
+    public void goToLinkedinPage() {
         driver.findElement(By.cssSelector("a[href*='https://www.linkedin.com/company/sauce-labs/'")).click();
     }
-    public void openBurgerMenu(){
+
+    public void openBurgerMenu() {
         clickButton(driver.findElement(By.cssSelector("#react-burger-menu-btn")));
     }
-    public void logout(){
+
+    public void logout() {
         openBurgerMenu();
         clickButton(wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#logout_sidebar_link"))));
     }
@@ -30,22 +33,30 @@ public class MainPage extends BasePage {
         List<WebElement> elements = driver.findElements(By.xpath("//div[@class='inventory_list']//div[@class='inventory_item']"));
         products.addAll(elements);
     }
-    public WebElement getFirstItem(){
+
+    public WebElement getFirstItem() {
         recordProductInCurrentOrder();
         return products.get(0);
     }
 
-    public void openFilterList(){
+    public String getProductTitle(WebElement product) {
+        return product.findElement(By.cssSelector(".inventory_item_name ")).getText();
+    }
+
+    public void openFilterList() {
         clickButton(driver.findElement(By.cssSelector(".product_sort_container")));
     }
+
     public void filterByPriceHighToLow() {
         openFilterList();
         clickButton(driver.findElement(By.xpath("//option[@value='hilo']")));
     }
+
     public void addToCart(WebElement product) {
         clickButton(product.findElement(By.cssSelector("button")));
     }
-    public void openCart(){
+
+    public void openCart() {
         clickButton(driver.findElement(By.cssSelector(".shopping_cart_link")));
     }
 

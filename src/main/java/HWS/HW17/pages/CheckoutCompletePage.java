@@ -3,9 +3,9 @@ package HWS.HW17.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CheckoutComplete extends BasePage {
+public class CheckoutCompletePage extends BasePage {
 
-    public CheckoutComplete(WebDriver driver) {
+    public CheckoutCompletePage(WebDriver driver) {
         super(driver);
     }
 

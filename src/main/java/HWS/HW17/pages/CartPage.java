@@ -3,8 +3,8 @@ package HWS.HW17.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Cart extends BasePage{
-    public Cart(WebDriver driver) {
+public class CartPage extends BasePage{
+    public CartPage(WebDriver driver) {
         super(driver);
     }
 
