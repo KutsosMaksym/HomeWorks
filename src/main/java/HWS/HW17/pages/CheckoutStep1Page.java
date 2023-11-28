@@ -1,9 +1,10 @@
 package HWS.HW17.pages;
 
+import HWS.Util.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CheckoutStep1Page extends BasePage{
+public class CheckoutStep1Page extends BasePage {
     public CheckoutStep1Page(WebDriver driver) {
         super(driver);
     }
