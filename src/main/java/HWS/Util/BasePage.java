@@ -1,4 +1,4 @@
-package HWS.HW17.pages;
+package HWS.Util;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

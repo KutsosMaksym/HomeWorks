@@ -1,5 +1,6 @@
 package HWS.HW17.pages;
 
+import HWS.Util.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
