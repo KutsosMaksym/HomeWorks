@@ -13,8 +13,8 @@ public class DownloadPage extends BasePage {
         driver.get("https://the-internet.herokuapp.com/download");
     }
 
-    public void downloadCsvFile() {
-        clickButton(driver.findElement(By.xpath("//a[@href='download/csv file.csv']")));
+    public void downloadFile(String fileName) {
+        clickButton(driver.findElement(By.xpath("//a[@href='download/" + fileName + "']")));
     }
 
 

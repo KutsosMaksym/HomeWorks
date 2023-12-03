@@ -19,7 +19,7 @@ public class FileDownloader extends BaseTest {
         DownloadPage downloadPage = new DownloadPage(driver);
         downloadPage.open();
 
-        downloadPage.downloadCsvFile();
+        downloadPage.downloadFile(fileName);
         Assert.assertTrue(FileHelper.waitFileDownloaded(DOWNLOAD_FOLDER_PATH, fileName, 5));
         Assert.assertTrue(FileHelper.hasCorrectExtension(DOWNLOAD_FOLDER_PATH + "\\" + fileName, ".csv"));
 
