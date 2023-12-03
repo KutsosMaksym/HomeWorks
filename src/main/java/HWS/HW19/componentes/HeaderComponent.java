@@ -1,6 +1,6 @@
 package HWS.HW19.componentes;
 
-import HWS.Util.BasePage;
+import HWS.globalPages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
