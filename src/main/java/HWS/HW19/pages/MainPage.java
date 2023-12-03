@@ -1,7 +1,7 @@
 package HWS.HW19.pages;
 
 import HWS.HW19.componentes.HeaderComponent;
-import HWS.Util.BasePage;
+import HWS.globalPages.BasePage;
 import org.openqa.selenium.WebDriver;
 
 public class MainPage extends BasePage {
