@@ -1,7 +1,7 @@
 package HWS.HW20;
 
 import HWS.HW20.pages.DownloadPage;
-import UtilTest.BaseTest;
+import HWS.UtilTest.BaseTest;
 import HWS.Util.FileHelper;
 import org.testng.Assert;
 import org.testng.annotations.Test;
