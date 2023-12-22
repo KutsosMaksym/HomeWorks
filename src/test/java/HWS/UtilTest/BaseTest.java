@@ -1,4 +1,4 @@
-package UtilTest;
+package HWS.UtilTest;
 
 import HWS.Util.ConfigLoader;
 import io.github.bonigarcia.wdm.WebDriverManager;
