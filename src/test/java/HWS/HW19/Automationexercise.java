@@ -2,7 +2,7 @@ package HWS.HW19;
 
 import HWS.HW19.pages.ContactUsPage;
 import HWS.HW19.pages.MainPage;
-import UtilTest.BaseTest;
+import HWS.UtilTest.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
