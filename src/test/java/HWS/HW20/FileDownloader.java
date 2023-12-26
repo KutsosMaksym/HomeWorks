@@ -2,7 +2,7 @@ package HWS.HW20;
 
 import HWS.HW20.pages.DownloadPage;
 import HWS.UtilTest.BaseTest;
-import HWS.Util.FileHelper;
+import HWS.Utils.FileHelper;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.io.IOException;
