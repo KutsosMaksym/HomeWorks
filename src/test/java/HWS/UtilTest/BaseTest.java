@@ -39,13 +39,13 @@ public class BaseTest {
     @BeforeMethod(alwaysRun = true)
     public void setup() {
         WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions(); //setPathDownloadedFiles
+        ChromeOptions options = new ChromeOptions();
         Map<String, Object> prefs = new HashMap<>();
         prefs.put("download.default_directory", new File(DOWNLOAD_FOLDER_PATH).getAbsolutePath());
         options.setExperimentalOption("prefs", prefs);
         driver = new ChromeDriver(options);
         driver.manage().window().setSize(new Dimension(1440, 1100));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
     }
 
     @AfterMethod(alwaysRun = true)
