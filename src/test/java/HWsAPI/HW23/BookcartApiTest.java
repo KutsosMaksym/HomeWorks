@@ -6,11 +6,15 @@ import HWsAPI.HW23.dto.ShoppingCartResponseDTO;
 import HWsAPI.HW23.dto.UserDTO;
 import HWsAPI.HW23.services.BookcartService;
 import io.restassured.response.Response;
+import listeners.ApiTestListener;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.util.List;
+import org.testng.annotations.Listeners;
 
-public class Bookcart {
+
+@Listeners(ApiTestListener.class)
+public class BookcartApiTest {
     BookcartService bookcartService = new BookcartService();
 
     @Test
@@ -61,7 +65,7 @@ public class Bookcart {
     }
 
 
-    @Test(enabled = false)
+    @Test //failed
     public void tryToAddNonExistentBookToCart() {
         UserDTO userDTO = TestData.buildDefaultUserData();
         bookcartService.createNewUser(userDTO);

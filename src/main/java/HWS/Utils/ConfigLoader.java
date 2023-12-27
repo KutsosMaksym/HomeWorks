@@ -1,4 +1,4 @@
-package HWS.Util;
+package HWS.Utils;
 
 import java.io.IOException;
 import java.io.InputStream;

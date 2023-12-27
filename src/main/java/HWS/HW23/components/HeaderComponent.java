@@ -1,6 +1,7 @@
 package HWS.HW23.components;
 
 import HWS.globalPages.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -18,6 +19,7 @@ public class HeaderComponent extends BasePage {
         clickButton(driver.findElement(By.xpath("//mat-icon[text()='shopping_cart']")));
     }
 
+    @Step("Open Cart")
     public int cartCount() {
         return Integer.parseInt(driver.findElement(By.xpath("//span[@id='mat-badge-content-0']")).getText());
     }

@@ -1,4 +1,4 @@
-package HWS.Util;
+package HWS.Utils;
 
 import java.io.File;
 import java.util.Arrays;
