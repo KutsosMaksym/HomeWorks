@@ -8,14 +8,15 @@ import org.openqa.selenium.WebDriver;
 
 public class CheckOutPage extends BasePage {
     private final HeaderComponent headerComponent;
+
     public CheckOutPage(WebDriver driver) {
         super(driver);
         this.headerComponent = new HeaderComponent(driver);
     }
 
     @Step("Open Order Page")
-    public void placeOrder(String name, String address1, String address2, String pinCode, String state) throws InterruptedException {
-        Thread.sleep(1000);
+    public void placeOrder(String name, String address1, String address2, String pinCode, String state) {
+        waitPageLoad();
         driver.findElement(By.xpath("//input[@formcontrolname='name']")).sendKeys(name);
         driver.findElement(By.xpath("//input[@formcontrolname='addressLine1']")).sendKeys(address1);
         driver.findElement(By.xpath("//input[@formcontrolname='addressLine2']")).sendKeys(address2);

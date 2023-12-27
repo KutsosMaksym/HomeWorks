@@ -11,6 +11,7 @@ public class HeaderComponent extends BasePage {
     }
 
     public void searchBook(String keyWord) {
+        waitPageLoad();
         driver.findElement(By.xpath("//input[@placeholder='Search books or authors']")).sendKeys(keyWord);
         clickButton(driver.findElement(By.xpath("//span[text()=' " + keyWord + " ']")));
     }

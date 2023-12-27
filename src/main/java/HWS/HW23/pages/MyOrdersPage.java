@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 
 public class MyOrdersPage extends BasePage {
     private final HeaderComponent headerComponent;
+
     public MyOrdersPage(WebDriver driver) {
         super(driver);
         this.headerComponent = new HeaderComponent(driver);
