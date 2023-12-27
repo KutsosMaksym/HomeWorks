@@ -8,14 +8,8 @@ import HWsAPI.HW23.dto.UserDTO;
 import HWsAPI.HW23.services.BookcartService;
 import io.restassured.response.Response;
 import io.qameta.allure.Description;
-import listeners.UiTestListener;
 import org.testng.Assert;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
-
-
-@Listeners(UiTestListener.class)
 
 public class BookcartTest extends BaseTest {
     BookcartService bookcartService = new BookcartService();
