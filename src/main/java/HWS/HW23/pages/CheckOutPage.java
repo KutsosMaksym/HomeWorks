@@ -2,6 +2,7 @@ package HWS.HW23.pages;
 
 import HWS.HW23.components.HeaderComponent;
 import HWS.globalPages.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -12,7 +13,7 @@ public class CheckOutPage extends BasePage {
         this.headerComponent = new HeaderComponent(driver);
     }
 
-
+    @Step("Open Order Page")
     public void placeOrder(String name, String address1, String address2, String pinCode, String state) throws InterruptedException {
         Thread.sleep(1000);
         driver.findElement(By.xpath("//input[@formcontrolname='name']")).sendKeys(name);

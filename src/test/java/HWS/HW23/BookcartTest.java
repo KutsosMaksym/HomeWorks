@@ -7,14 +7,16 @@ import HWsAPI.HW23.dto.LoginResponseDTO;
 import HWsAPI.HW23.dto.UserDTO;
 import HWsAPI.HW23.services.BookcartService;
 import io.restassured.response.Response;
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Bookcart extends BaseTest {
+public class BookcartTest extends BaseTest {
     BookcartService bookcartService = new BookcartService();
     String title = "Slayer";
     String price = "₹1,234.00";
     @Test
+    @Description("E2E test")
     public void toBuyBookE2E() throws InterruptedException {
         MainPage mainPage = new MainPage(driver);
         mainPage.openMainPage();
@@ -45,6 +47,5 @@ public class Bookcart extends BaseTest {
 
         MyOrdersPage myOrdersPage = new MyOrdersPage(driver);
         Assert.assertEquals(myOrdersPage.getTotalPrice(), price);
-        System.out.println();
     }
 }

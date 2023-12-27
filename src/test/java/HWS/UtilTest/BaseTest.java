@@ -1,6 +1,6 @@
 package HWS.UtilTest;
 
-import HWS.Util.ConfigLoader;
+import HWS.Utils.ConfigLoader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
@@ -46,6 +46,7 @@ public class BaseTest {
         driver = new ChromeDriver(options);
         driver.manage().window().setSize(new Dimension(1440, 1100));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
+        WebDriverProvider.setDriver(driver);
     }
 
     @AfterMethod(alwaysRun = true)
