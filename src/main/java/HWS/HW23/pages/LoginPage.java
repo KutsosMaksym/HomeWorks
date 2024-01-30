@@ -15,13 +15,13 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Login")
-    public void login(String login, String password) throws InterruptedException {
-        Thread.sleep(2000);
+    public void login(String login, String password) {
+        waitPageLoad();
         driver.findElement(By.xpath("//input[@data-placeholder='Username']")).sendKeys(login);
         driver.findElement(By.xpath("//input[@data-placeholder='Password']")).sendKeys(password);
         clickButton(driver.findElement(By.xpath("//button[@class='mat-focus-indicator mat-raised-button mat-button-base mat-primary']")));
-        Thread.sleep(3000);
-        driver.navigate().refresh();
+        if (isElementVisible(By.xpath("//mat-card-title[text()=' Shopping cart is empty ']")))
+            driver.navigate().refresh();
     }
 
     public HeaderComponent getHeaderComponent() {

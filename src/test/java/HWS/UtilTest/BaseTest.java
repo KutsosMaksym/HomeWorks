@@ -26,7 +26,7 @@ public class BaseTest {
     public void beforeClass(ITestContext context) {
         String className = this.getClass().getSimpleName();
         System.out.println(className + " tests are started");
-        String environment = System.getProperty("env","dev");
+        String environment = System.getProperty("env", "dev");
         config = new ConfigLoader(environment);
     }
 
