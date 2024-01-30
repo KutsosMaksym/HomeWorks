@@ -17,19 +17,19 @@ public class BookcartTest extends BaseTest {
     String price = "₹1,234.00";
     @Test
     @Description("E2E test")
-    public void toBuyBookE2E() throws InterruptedException {
+    public void toBuyBookE2E() {
+        UserDTO userDTO = TestData.buildDefaultUserData();
+        bookcartService.createNewUser(userDTO);
+        Response response = bookcartService.login(userDTO);
+        response.then().statusCode(200).extract().as(LoginResponseDTO.class);
+
         MainPage mainPage = new MainPage(driver);
         mainPage.openMainPage();
 
         mainPage.getHeaderComponent().searchBook(title);
         mainPage.addFirstItemToCart();
 
-        UserDTO userDTO = TestData.buildDefaultUserData();
-        bookcartService.createNewUser(userDTO);
-        Response response = bookcartService.login(userDTO);
-        response.then().statusCode(200).extract().as(LoginResponseDTO.class);
-
-        Assert.assertEquals(mainPage.getHeaderComponent().cartCount(), 1);
+        mainPage.getHeaderComponent().checkCountInCart(1);
         mainPage.getHeaderComponent().openCart();
 
         CartItemsPage cartItemsPage = new CartItemsPage(driver);

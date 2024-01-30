@@ -45,7 +45,7 @@ public class BaseTest {
         options.setExperimentalOption("prefs", prefs);
         driver = new ChromeDriver(options);
         driver.manage().window().setSize(new Dimension(1440, 1100));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
         WebDriverProvider.setDriver(driver);
     }
 

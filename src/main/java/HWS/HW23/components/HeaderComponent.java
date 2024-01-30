@@ -4,6 +4,7 @@ import HWS.globalPages.BasePage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HeaderComponent extends BasePage {
     public HeaderComponent(WebDriver driver) {
@@ -14,6 +15,11 @@ public class HeaderComponent extends BasePage {
         waitPageLoad();
         driver.findElement(By.xpath("//input[@placeholder='Search books or authors']")).sendKeys(keyWord);
         clickButton(driver.findElement(By.xpath("//span[text()=' " + keyWord + " ']")));
+    }
+
+    public void checkCountInCart(int expectedCount){
+        wait.until(ExpectedConditions.textToBe(By.xpath("//span[@id='mat-badge-content-0']"),
+                String.valueOf(expectedCount)));
     }
 
     public void openCart() {
